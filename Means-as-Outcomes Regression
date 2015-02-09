@@ -1,18 +1,18 @@
 Means-as-Outcomes Regression
 
-Level 1: Yij = β0j + rij [2.0] 
+Level 1: Yij = β0j + rij [1.0] 
 where rij~ N(0,σ^2) # Level-1 residual
   
-Level 2: Level 2: β0j = γ00 + γ01Wj + u0j [2.1] #One Level-2 predictor Wj included
+Level 2: Level 2: β0j = γ00 + γ01Wj + u0j [1.1] #One Level-2 predictor Wj included
 where u0j~ N(0,τ_00) # Level-2 random effects
 
-Substituting [2.1] into [2.0] yields the multilevel model:
-Combination: Yij= γ00 + γ01Wj + (u0j + rij) [2.2] # terms inside () are random effects
+Substituting [1.1] into [1.0] yields the multilevel model:
+Combination: Yij= γ00 + γ01Wj + (u0j + rij) [1.2] # terms inside () are random effects
 where u0j~ N(0,τ_00) and rij~ N(0,σ^2)
 
 Proportion of variance explained in B0j = τ_00(random ANOVA)-τ_00(MEAN_Wj)/τ_00(random ANOVA)
 
 # R
-model_[2.2]<-lme(DV~1+MEAN_Wj, random=~1|ID, method="ML", data=TRUE)
-summary(model_[2.2])
-interval(model_[2.2])
+model_[1.2]<-lme(DV~1+MEAN_Wj, random=~1|ID, method="ML", data=TRUE)
+summary(model_[1.2])
+interval(model_[1.2])
