@@ -1,0 +1,26 @@
+Random-Coefficient Regression Model
+
+=======================================
+Declarations of what we have:
+Dependent variable = DV
+Level-1 Independent variable= X1, X2, X3
+========================================
+
+Level 1:
+  Yij=β0j +β1j (X1)+ β2j (X2)+ β3j (X3) + rij [3.0] # THREE Level-1 Predictors (X1...X3) are included
+where rij ~independently N(0, σ^2).
+
+Level 2: 
+  β0j = γ00 + u0j [3.1]
+  β1j = γ10 + u1j [3.2]
+  β2j = γ20 + u2j [3.3]
+  β3j = γ30 + u3j [3.4]
+where u0j … u3j ~independently N(0, τ_00… τ_33).
+
+Substituting [3.1... 3.4] into [3.0] yields the multilevel model:
+  Yij = γ00 + γ10 + γ20 + γ30 + (u0j + u1j+ u2j+ u3j+ rij) [3.5] # terms inside () are random effects
+
+# R
+model_[3.5]<-lme(DV~1+X1+X2+X3, random=~1+X1+X2+X3|ID, method="ML", data=TRUE)
+summary(model_[3.5])
+interval(model_[3.5])
