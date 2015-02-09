@@ -8,4 +8,4 @@ There are several submodels in HLM <a href="http://books.google.com.my/books/abo
 4. Random-Coefficient Regression Model.
 5. Intercepts-and-Slopes-as-Outcomes.
 
-My purpose of doing is to gain better understanding of how to perform HLM using packages <a href="http://cran.r-project.org/web/packages/nlme/index.html">(nlme)</a>.
+My purpose of doing this is to gain better understanding of how to perform HLM using packages <a href="http://cran.r-project.org/web/packages/nlme/index.html">(nlme)</a>.
