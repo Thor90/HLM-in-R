@@ -1,0 +1,20 @@
+# The One-Way ANOVA with Random Effects (Unconditional model)
+Level 1: Yij = β0j + rij [1.0] 
+where rij~ N(0,σ^2) # Level-1 residual that is normally distributed
+
+Level 2: Level 2: β0j = γ00 + u0j [1.1] 
+where u0j~ N(0,τ_00) # Level-2 random effects
+
+Substituting [1.1] into [1.0] yields the multilevel model:
+Combination: Yij= γ00 + (u0j + rij) [1.2] # terms inside () are random effects
+where u0j~ N(0,τ_00) and rij~ N(0,σ^2)
+
+ICC= τ_00/(τ_00+σ^2) 
+1. Measurement of the degree of dependency of individuals
+2. Percentage of variance of DV that can be explained by the 'Group-Level'
+
+# R
+library(nlme)
+null<-lme(DV~1, random=~1|ID, method="ML", data=TRUE)
+summary(null)
+interval(null)
