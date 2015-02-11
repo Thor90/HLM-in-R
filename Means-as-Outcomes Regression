@@ -15,4 +15,4 @@ Proportion of variance explained in B0j = τ_00(random ANOVA)-τ_00(MEAN_Wj)/τ_
 # R
 model_[1.2]<-lme(DV~1+MEAN_Wj, random=~1|ID, method="ML", data=TRUE)
 summary(model_[1.2])
-interval(model_[1.2])
+intervals(model_[1.2])
