@@ -1,0 +1,25 @@
+An Intercepts-and-Slopes-as-Outcomes Model
+
+=======================================
+Declarations of what we have:
+Dependent variable = DV
+Level-1 Independent variable= Xij
+Level-2 Independent variable= Wj
+========================================
+
+Level 1:
+ Yij=β0j +β1j(Xij)+rij [1.0]
+where rij ~independently N(0, σ^2).
+
+Level 2:
+ β0j = γ00 + γ01(Wj)+u0j  [1.1a]
+ β1j = γ10 + γ11(Wj)+u1j [1.1b]
+where u0j … u3j ~independently N(0, τ_00… τ_11).
+
+Combined group-level [1.1] into individual level [1.0] yields:
+ Yij = γ00 + γ01(Wj) + γ10(Xij) + γ11(Xij)(Wj) + (u0j + u1j+ rij) [1.2] # we have cross-level interaction effects here.
+
+# R
+model_[1.2]<-lme(DV~1+MEAN_Wj+X1+X1*MEAN_Wj, random=~1+X1|ID, method="ML", data=TRUE)
+summary(model_[1.2])
+VarCorr(model_[1.2])
